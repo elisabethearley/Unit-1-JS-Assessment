@@ -75,6 +75,7 @@ function getVehiclesCostInCreditsSumTotal(character) {
   return sum;
 }
   //return character.vehicles[0].cost_in_credits + character.vehicles[1].cost_in_credits;
+  //doesn't work on null. .reduce accounts for properties with no value. 
 
 /**
  * ### Challenge `getStarshipPassengerAndCrewSumTotal`
@@ -87,7 +88,10 @@ function getVehiclesCostInCreditsSumTotal(character) {
  * Sample data expected output: 27
 */
 function getStarshipPassengerAndCrewSumTotal(character) {
-  // TODO: Add your code here.
+  const sumSpots = character.starships.reduce((accumulator, starship) => {
+    return accumulator + (starship.crew + starship.passengers);
+  }, 0);
+  return sumSpots;
 }
 
 /**
@@ -104,7 +108,12 @@ function getStarshipPassengerAndCrewSumTotal(character) {
  * Given film #7, expected error: `There are only 3 Star Wars movies. Flan fiction excluded.`
 */
 function getNthFilm(character, filmNumber) {
-  // TODO: Add your code here.
+  if (filmNumber <= 3 ) {
+    let nth = filmNumber - 1;
+    return character.films[nth]
+  } else if (filmNumber > 3) {
+    return 'There are only 3 Star Wars movies. Flan fiction excluded.'
+  }
 }
 
 /**
