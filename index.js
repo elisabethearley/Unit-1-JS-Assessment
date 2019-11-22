@@ -57,7 +57,7 @@ function getSecondStarshipName(character) {
  *    Result: `Luke Skywalker, 172cm, 77kg. Featured in 5 films.`
  */
 function getSummary(character) {
-  // TODO: Add your code here.
+  return `${character.name}, ${character.height}cm, ${character.mass}kg. Featured in ${character.films.length} films.`
 }
 
 /**
@@ -69,8 +69,12 @@ function getSummary(character) {
  * Sample data expected output: 8000
 */
 function getVehiclesCostInCreditsSumTotal(character) {
-  // TODO: Add your code here.
+  const sum = character.vehicles.reduce((accumulator, vehicle) => {
+    return accumulator + vehicle.cost_in_credits;
+  }, 0);
+  return sum;
 }
+  //return character.vehicles[0].cost_in_credits + character.vehicles[1].cost_in_credits;
 
 /**
  * ### Challenge `getStarshipPassengerAndCrewSumTotal`
